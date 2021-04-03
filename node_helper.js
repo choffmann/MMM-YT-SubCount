@@ -14,7 +14,6 @@ module.exports = NodeHelper.create({
 		this.finalData = [];
 		this.channelIds = [];
 		this.apiKey = null;
-		this.url = "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&part=snippet&id="
 	},
 
 	socketNotificationReceived: function (notification, payload) {
@@ -31,13 +30,15 @@ module.exports = NodeHelper.create({
 	},
 
 	breakDownChannelIds: function () {
+		this.url = "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&part=snippet&id="
 		this.channelIds.forEach(channel => {
-			this.getData(channel.id)
+			this.url = this.url + "&id=" + channel.id;
 		});
+		this.getData(this.url);
 	},
 
-	getData: function (channelId) {
-		fetch(this.url + channelId + "&key=" + this.apiKey, {
+	getData: function (url) {
+		fetch(url + "&key=" + this.apiKey, {
 			method: 'GET',
 			headers: {
 				"Accept": "application/json"
@@ -49,6 +50,6 @@ module.exports = NodeHelper.create({
 	},
 
 	handleData: function (data) {
-		console.log(data)
+		this.sendSocketNotification("MMM-YT-SubCount-DATA_IS_READY", data);
 	}
 });

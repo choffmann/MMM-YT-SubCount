@@ -3,7 +3,7 @@
 /* Magic Mirror
  * Module: MMM-YT-SubCount
  *
- * By Cedrik Hoffmann
+ * By Cedrik Hoffmann (https://github.com/choffmann)
  * MIT Licensed.
  */
 
@@ -12,24 +12,18 @@ Module.register("MMM-YT-SubCount", {
 		apiKey: '',
 		channelIds: [
 			{
-				id: '',
-				name: null
+				id: ''
 			}
 		],
 		showChannelImg: true,
 		updateInterval: 60000,
-		retryDelay: 5000
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
 
 	start: function () {
 		var self = this;
-		var dataRequest = null;
-		var dataNotification = null;
-
-		//Flag for check if module is loaded
-		this.loaded = false;
+		this.finalPayload = [];
 
 		// Schedule update timer.
 		this.sendSocketNotification('MMM-YT-SubCount-HERE_IS_CONFIG', this.config);
@@ -38,45 +32,55 @@ Module.register("MMM-YT-SubCount", {
 		}, this.config.updateInterval);
 	},
 
-	/*
-	 * getData
-	 * function example return data and show it in the module wrapper
-	 * get a URL request
-	 *
-	 */
-	getData: function () {
-
-	},
-
-
-	/* scheduleUpdate()
-	 * Schedule next update.
-	 *
-	 * argument delay number - Milliseconds before next update.
-	 *  If empty, this.config.updateInterval is used.
-	 */
-	scheduleUpdate: function (delay) {
-		var nextLoad = this.config.updateInterval;
-		if (typeof delay !== "undefined" && delay >= 0) {
-			nextLoad = delay;
-		}
-		nextLoad = nextLoad;
-		var self = this;
-		setTimeout(function () {
-			self.getData();
-		}, nextLoad);
-	},
-
 	getDom: function () {
 		var self = this;
 
-		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
-		var h = document.createElement("p");
-		h.innerHTML = this.translate("Hello World");
-		wrapper.appendChild(h);
+		wrapper.id = "MMM-YT-SubCount-root";
+
+		console.log(this.finalPayload)
+		if (this.finalPayload != undefined) {
+			this.finalPayload.items.forEach(item => {
+				var section = document.createElement("div");
+				section.id = "MMM-YT-SubCount-container";
+
+				var img = document.createElement("div");
+				img.innerHTML = `<img src="${item.snippet.thumbnails.default.url}" width="${item.snippet.thumbnails.default.width}" height="${item.snippet.thumbnails.default.height}">`;
+				section.appendChild(img);
+
+				var content = document.createElement("div");
+				content.id = "MMM-YT-SubCount-content";
+
+				var title = document.createElement("p");
+				title.id = "MMM-YT-SubCount-title";
+				title.innerText = `${item.snippet.title}`
+
+				var count = document.createElement("div");
+				count.id = "MMM-YT-SubCount-count";
+				count.innerHTML = `<p class="mdi mdi-youtube">${this.numFormatter(item.statistics.subscriberCount)}`
+
+				if (!this.config.showChannelImg) {
+					img.style.visibility = "hidden";
+				}
+
+				content.appendChild(title);
+				content.appendChild(count);
+				section.appendChild(content);
+				wrapper.appendChild(section)
+			})
+		}
 
 		return wrapper;
+	},
+
+	numFormatter: function (num) {
+		if (Math.abs(num) > 999999) {
+			return Math.sign(num) * ((Math.abs(num) / 1000000).toFixed(1)) + 'm'
+		} else if (Math.abs(num) > 999) {
+			return Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k'
+		} else {
+			return Math.sign(num) * Math.abs(num)
+		}
 	},
 
 	getScripts: function () {
@@ -86,6 +90,7 @@ Module.register("MMM-YT-SubCount", {
 	getStyles: function () {
 		return [
 			"MMM-YT-SubCount.css",
+			"https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css",
 		];
 	},
 
@@ -98,22 +103,10 @@ Module.register("MMM-YT-SubCount", {
 		};
 	},
 
-	processData: function (data) {
-		var self = this;
-		this.dataRequest = data;
-		if (this.loaded === false) { self.updateDom(self.config.animationSpeed); }
-		this.loaded = true;
-
-		// the data if load
-		// send notification to helper
-		this.sendSocketNotification("MMM-YT-SubCount-NOTIFICATION_TEST", data);
-	},
-
 	// socketNotificationReceived from helper
 	socketNotificationReceived: function (notification, payload) {
-		if (notification === "MMM-YT-SubCount-NOTIFICATION_TEST") {
-			// set dataNotification
-			this.dataNotification = payload;
+		if (notification === "MMM-YT-SubCount-DATA_IS_READY") {
+			this.finalPayload = payload;
 			this.updateDom();
 		}
 	},
