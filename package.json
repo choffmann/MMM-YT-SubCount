@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "npm run test:prettier && npm run test:js && npm run test:css",
+    "lint": "npm run lint:prettier && npm run lint:js && npm run lint:css",
     "test:unit": "NODE_ENV=test mocha tests --recursive",
     "test:prettier": "prettier --check **/*.{js,css,json,md,yml}",
     "test:js": "eslint *.js --config .eslintrc.json --quiet",
@@ -20,7 +21,7 @@
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-jsdoc": "^30.7.8",
-    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "grunt": "latest",
     "grunt-eslint": "latest",
     "grunt-jsonlint": "latest",
@@ -29,7 +30,7 @@
     "grunt-yamllint": "latest",
     "mocha": "^8.2.1",
     "module-alias": "^2.2.2",
-    "prettier": "^2.2.1",
+    "prettier": "2.2.1",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "latest",
@@ -41,8 +42,8 @@
     "url": "git+https://github.com/ianperrin/MMM-YT-SubCount.git"
   },
   "bugs": {
-		"url": "https://github.com/ianperrin/MMM-YT-SubCount/issues"
-	},
+    "url": "https://github.com/ianperrin/MMM-YT-SubCount/issues"
+  },
   "dependencies": {
     "node-fetch": "^2.6.1"
   }
