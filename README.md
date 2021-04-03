@@ -26,7 +26,7 @@ $ git clone https://github.com/choffmann/MMM-YT-SubCount.git
 After you clone the repositories, you have to install the `node modules`
 
 ```
-$ cd ./MMM-MMM-YT-SubCount
+$ cd ./MMM-YT-SubCount
 $ npm install
 ```
 
