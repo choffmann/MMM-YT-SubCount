@@ -56,8 +56,20 @@ var config = {
   modules: [
     {
       module: "MMM-YT-SubCount",
+      header: "Youtube Counter",
+      position: "top_right",
       config: {
-        // See below for configurable options
+        apiKey: "YOUR_API_KEY",
+        showChannelImg: true,
+        channelIds: [
+          {
+            id: "UC8uT9cgJorJPWu7ITLGo9Ww"
+          },
+          {
+            id: "UCKuHFYu3smtrl2AwwMOXOlg"
+          }
+          // and so on...
+        ]
       }
     }
   ]
@@ -66,7 +78,9 @@ var config = {
 
 ## Configuration options
 
-| Option    | Description                                                                                                     |
-| --------- | --------------------------------------------------------------------------------------------------------------- |
-| `option1` | _Required_ DESCRIPTION HERE                                                                                     |
-| `option2` | _Optional_ DESCRIPTION HERE TOO <br><br>**Type:** `int`(milliseconds) <br>Default 60000 milliseconds (1 minute) |
+| Option           | Description                                                                                                 |
+| ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| `apiKey`         | **_Required_** Your API Key goes here                                                                       |
+| `channelIds`     | **_Required_** Put the Channel ids here in the Array <br><br> {<br>id: " CHANNEL_ID"<br>},                  |
+| `showChannelImg` | **_Optional_** Display the channel profile image <br><br>**Type:** `boolean` <br>Default `true`             |
+| `updateInterval` | **_Optional_** Refresh rate <br><br>**Type:** `int`(milliseconds) <br>Default 60000 milliseconds (1 minute) |
