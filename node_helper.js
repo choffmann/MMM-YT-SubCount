@@ -22,8 +22,8 @@ module.exports = NodeHelper.create({
         this.channelIds = payload.channelIds;
         this.breakDownChannelIds();
         break;
-      case "UPDATE_PLEASE":
-        this.crypto();
+      case "MMM-YT-SubCount-UPDATE_PLEASE":
+        this.breakDownChannelIds();
         break;
     }
   },

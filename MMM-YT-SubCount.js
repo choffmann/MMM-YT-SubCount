@@ -26,6 +26,7 @@ Module.register("MMM-YT-SubCount", {
     // Schedule update timer.
     this.sendSocketNotification("MMM-YT-SubCount-HERE_IS_CONFIG", this.config);
     setInterval(function () {
+      self.sendSocketNotification("MMM-YT-SubCount-UPDATE_PLEASE");
       self.updateDom();
     }, this.config.updateInterval);
   },
@@ -35,7 +36,7 @@ Module.register("MMM-YT-SubCount", {
 
     var wrapper = document.createElement("div");
     wrapper.id = "MMM-YT-SubCount-root";
-    if (this.finalPayload !== undefined) {
+    if (this.finalPayload.items !== undefined) {
       this.finalPayload.items.forEach((item) => {
         var section = document.createElement("div");
         section.id = "MMM-YT-SubCount-container";
