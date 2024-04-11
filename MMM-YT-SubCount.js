@@ -14,6 +14,9 @@ Module.register("MMM-YT-SubCount", {
       }
     ],
     showChannelImg: true,
+    showFullCount: false,
+    showViewCount: false,
+    showFullViewCount: false,
     updateInterval: 60000
   },
 
@@ -53,10 +56,28 @@ Module.register("MMM-YT-SubCount", {
         title.innerText = `${item.snippet.title}`;
 
         var count = document.createElement("div");
+        var views = document.createElement("div");
+
         count.id = "MMM-YT-SubCount-count";
-        count.innerHTML = `<p class="mdi mdi-youtube">${this.numFormatter(
+        views.id = "MMM-YT-SubCount-views";
+
+        if (!this.config.showFullCount) {
+          item.statistics.subscriberCount = this.numFormatter(item.statistics.subscriberCount)
+        }
+
+        if (!this.config.showFullViewCount) {
+          item.statistics.viewCount = this.numFormatter(item.statistics.viewCount)
+        }
+
+        if (this.config.showViewCount) {
+          views.innerHTML = `<p class="mdi mdi-eye">${
+            item.statistics.viewCount
+          }`;
+        }
+
+        count.innerHTML = `<p class="mdi mdi-youtube">${
           item.statistics.subscriberCount
-        )}`;
+        }`;
 
         if (!this.config.showChannelImg) {
           img.style.visibility = "hidden";
@@ -64,6 +85,7 @@ Module.register("MMM-YT-SubCount", {
 
         content.appendChild(title);
         content.appendChild(count);
+        content.appendChild(views);
         section.appendChild(content);
         wrapper.appendChild(section);
       });
