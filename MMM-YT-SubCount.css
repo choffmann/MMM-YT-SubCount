@@ -14,7 +14,7 @@
   margin: -1em;
 }
 
-#MMM-YT-SubCount-container {
+#mmm-yt-subcount-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,16 +22,16 @@
   text-align: left;
 }
 
-#MMM-YT-SubCount-content {
+#mmm-yt-subcount-content {
   text-align: right;
 }
 
-#MMM-YT-SubCount-container img {
-  border-radius: 50% 50%;
+#mmm-yt-subcount-container img {
+  border-radius: 50%;
   transform: scale(0.8, 0.8);
 }
 
-#MMM-YT-SubCount-title {
+#mmm-yt-subcount-title {
   margin-top: 0.3em;
   padding-top: -1em;
   margin-bottom: -1em;
@@ -40,7 +40,7 @@
   font-size: 25px;
 }
 
-#MMM-YT-SubCount-count {
+#mmm-yt-subcount-count {
   margin-top: 0.3em;
   padding-top: -1em;
   margin-bottom: -1em;
@@ -48,7 +48,7 @@
   font-size: 23px;
 }
 
-#MMM-YT-SubCount-count p {
+#mmm-yt-subcount-count p {
   margin-top: 0.3em;
   padding-top: -1em;
   margin-bottom: -1em;

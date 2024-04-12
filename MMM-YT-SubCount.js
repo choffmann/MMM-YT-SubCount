@@ -42,24 +42,24 @@ Module.register("MMM-YT-SubCount", {
     if (this.finalPayload.items !== undefined) {
       this.finalPayload.items.forEach((item) => {
         var section = document.createElement("div");
-        section.id = "MMM-YT-SubCount-container";
+        section.id = "mmm-yt-subcount-container";
 
         var img = document.createElement("div");
         img.innerHTML = `<img src="${item.snippet.thumbnails.default.url}" width="${item.snippet.thumbnails.default.width}" height="${item.snippet.thumbnails.default.height}">`;
         section.appendChild(img);
 
         var content = document.createElement("div");
-        content.id = "MMM-YT-SubCount-content";
+        content.id = "mmm-yt-subcount-content";
 
         var title = document.createElement("p");
-        title.id = "MMM-YT-SubCount-title";
+        title.id = "mmm-yt-subcount-title";
         title.innerText = `${item.snippet.title}`;
 
         var count = document.createElement("div");
         var views = document.createElement("div");
 
-        count.id = "MMM-YT-SubCount-count";
-        views.id = "MMM-YT-SubCount-views";
+        count.id = "mmm-yt-subcount-count";
+        views.id = "mmm-yt-subcount-views";
 
         if (!this.config.showFullCount) {
           item.statistics.subscriberCount = this.numFormatter(item.statistics.subscriberCount)
