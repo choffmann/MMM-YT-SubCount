@@ -38,7 +38,7 @@ Module.register("MMM-YT-SubCount", {
     var self = this;
 
     var wrapper = document.createElement("div");
-    wrapper.id = "MMM-YT-SubCount-root";
+    wrapper.id = "mmm-yt-subcount-root";
     if (this.finalPayload.items !== undefined) {
       this.finalPayload.items.forEach((item) => {
         var section = document.createElement("div");

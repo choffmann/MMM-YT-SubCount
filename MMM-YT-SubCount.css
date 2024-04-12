@@ -9,7 +9,7 @@
  *
  */
 
-#root {
+#mmm-yt-subcount-root {
   padding: -1em;
   margin: -1em;
 }
@@ -32,7 +32,7 @@
 }
 
 #mmm-yt-subcount-title {
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   padding-top: -1em;
   margin-bottom: -1em;
   padding-bottom: -1em;
@@ -41,7 +41,7 @@
 }
 
 #mmm-yt-subcount-count {
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   padding-top: -1em;
   margin-bottom: -1em;
   padding-bottom: -1em;
@@ -49,14 +49,14 @@
 }
 
 #mmm-yt-subcount-count p {
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   padding-top: -1em;
   margin-bottom: -1em;
   padding-bottom: -1em;
   font-size: 23px;
 }
 
-#MMM-YT-SubCount-views p {
-  margin-top: 0.3em;
+#mmm-yt-subcount-views p {
+  margin-top: 0.5em;
   font-size: 23px;
 }
