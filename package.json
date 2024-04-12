@@ -1,5 +1,5 @@
 {
-  "name": "MMM-YT-SubCount",
+  "name": "mmm-yt-subcount",
   "version": "1.0.0",
   "description": "MagicMirror Module - Show the subscription from a Youtube Channel on the MagicMirror",
   "main": "MMM-YT-SubCount.js",
@@ -17,25 +17,17 @@
     "lint:css": "stylelint **/*.css --config .stylelintrc.json --fix"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^7.15.0",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-jsdoc": "^30.7.8",
-    "eslint-plugin-prettier": "^3.3.1",
-    "grunt": "latest",
-    "grunt-eslint": "latest",
-    "grunt-jsonlint": "latest",
-    "grunt-markdownlint": "^1.0.13",
-    "grunt-stylelint": "latest",
-    "grunt-yamllint": "latest",
-    "mocha": "^8.2.1",
+    "chai": "^4.3.7",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-jsdoc": "^40.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "mocha": "^10.2.0",
     "module-alias": "^2.2.2",
-    "prettier": "2.2.1",
-    "stylelint": "^13.8.0",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-standard": "latest",
-    "stylelint-prettier": "^1.1.2",
-    "time-grunt": "latest"
+    "prettier": "2.8.4",
+    "stylelint": "^15.2.0",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-prettier": "^3.0.0"
   },
   "repository": {
     "type": "git",
@@ -45,6 +37,6 @@
     "url": "https://github.com/ianperrin/MMM-YT-SubCount/issues"
   },
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.9"
   }
 }
