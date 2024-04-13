@@ -14,6 +14,12 @@ Version 1.0.0
 | :-------------------------------------------------------------------: | -------------------------------------------------------------------- |
 |             YouTube Subscriber Counter with profile image             | YouTube Subscriber Counter without profile image                     |
 
+Version 1.0.1
+
+| ![YouTube Subscriber Counter with view count](img/view_count.png)  | ![YouTube Subscriber Counter with view count no image](img/view_count_no_img.png)  |
+| :----------------------------------------------------------------: | ---------------------------------------------------------------------------------- |
+|            YouTube Subscriber Counter with view count              | YouTube Subscriber Counter with view count no image                                |
+
 ## Installation
 
 This module is pretty simple to set up. You simply need to clone the module into your modules folder (like other modules).
@@ -61,6 +67,7 @@ var config = {
       config: {
         apiKey: "YOUR_API_KEY",
         showChannelImg: true,
+        showViewCount: true,
         channelIds: [
           {
             id: "UC8uT9cgJorJPWu7ITLGo9Ww"
@@ -78,9 +85,12 @@ var config = {
 
 ## Configuration options
 
-| Option           | Description                                                                                                 |
-| ---------------- | ----------------------------------------------------------------------------------------------------------- |
-| `apiKey`         | **_Required_** Your API Key goes here                                                                       |
-| `channelIds`     | **_Required_** Put the Channel ids here in the Array <br><br> {<br>id: " CHANNEL_ID"<br>},                  |
-| `showChannelImg` | **_Optional_** Display the channel profile image <br><br>**Type:** `boolean` <br>Default `true`             |
-| `updateInterval` | **_Optional_** Refresh rate <br><br>**Type:** `int`(milliseconds) <br>Default 60000 milliseconds (1 minute) |
+| Option              | Description                                                                                                 |
+| ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `apiKey`            | **_Required_** Your API Key goes here                                                                       |
+| `channelIds`        | **_Required_** Put the Channel ids here in the Array <br><br> {<br>id: " CHANNEL_ID"<br>},                  |
+| `showChannelImg`    | **_Optional_** Display the channel profile image <br><br>**Type:** `boolean` <br>Default `true`             |
+| `updateInterval`    | **_Optional_** Refresh rate <br><br>**Type:** `int`(milliseconds) <br>Default 60000 milliseconds (1 minute) |
+| `showFullCount`     | **_Optional_** Show full subscriber count number <br><br>**Type:** `boolean` <br>Default `false`            |
+| `showViewCount`     | **_Optional_** Show channel views <br><br>**Type:** `boolean` <br>Default `false`                           |
+| `showFullViewCount` | **_Optional_** Shows full views number <br><br>**Type:** `boolean` <br>Default `false`                      |
